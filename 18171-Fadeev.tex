@@ -19,7 +19,8 @@
 \usepackage{tocloft}
 \usepackage{textcomp}
 \usepackage{setspace}
-
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 %\renewcommand{\thesection}{\arabic{section}.}
 
 \renewcommand{\P}[1]{\mathbb{P} \left( #1 \right)}
@@ -244,7 +245,7 @@
    
 
    \begin{Def}
-   	S-матрица (матрица рассеяния) ~--- это матрица 
+   	$S$-матрица (матрица рассеяния) ~--- это матрица 
     \begin{equation}\label{DSM}
     S(k)=\left(%
     \begin{array}{cc}
@@ -255,7 +256,7 @@
     \end{equation}
    \end{Def}
 
-   Л.~Д.~Фаддеевым доказано \cite{SMatrix}, что существуют решения с заданными асимптотиками, а также S-матрица унитарна и удовлетворяет условию симметрии $s_{11}\left(k\right) = s_{22}\left(k\right)$.
+   Л.~Д.~Фаддеевым доказано \cite{SMatrix}, что существуют решения с заданными асимптотиками, а также $S$-матрица унитарна и удовлетворяет условию симметрии $s_{11}\left(k\right) = s_{22}\left(k\right)$.
    
    \subsection{Константный потенциал}
    Предположим, что в уравнении (\ref{Schred1D}) потенциал $$u = u\left(x\right) \equiv \tilde{u} = const \in \mathbb{C},$$ тогда имеем линейное однородное дифференциальное уравнение второго порядка с постоянными коэффициентами. Его характеристическое уравнение имеет вид
@@ -332,9 +333,540 @@
   \end{equation}
 
   а в каждой вершине -- граничным условиям 1) и 2). Заметим, что
-  введённая ранее ориентация на ребрах не является существенным
+  введённая ранее ориентация на рёбрах не является существенным
   требованием, и служит лишь для удобства вычисления производных по
-исходящим дугам.
+  исходящим дугам.
+  
+  \pagebreak
+  
+  \section{Задача рассеяния на некомпактных графах}
+  
+  Рассмотрим произвольный некомпактный граф, который можно получить добавлением некоторого количества полубесконечных дуг к компактному графу.
+  Аналогичным образом можно определить самосопряженный оператор
+  $L_G$. Отличие состоит лишь в том, что некоторые операторы
+  $\{L_i\}$ действуют в $L_2(0, \infty)$ и
+  $D(L_i)=\{\varphi:\varphi\in C_0^\infty[0,\infty]\}$.
+  
+  \begin{gather*}
+  L_2(G)=\sum_{B'}\oplus L_2[0, l_i]\bigoplus\sum_{B''}\oplus
+  L_2[0,\infty],
+  \\
+  D(G)=\sum_{B'}\oplus C_0^\infty[0,l_i]\bigoplus\sum_{B''}\oplus
+  C_0^\infty[0,\infty]
+  \end{gather*}
+  
+  Исходя из нужд задачи рассеяния потенциалы $u_i$ на
+  соответствующих ребрах будем считать вещественными измеримыми
+  функциями с конечным первым моментом
+  
+  \begin{equation}
+  \int_0^\infty(1+x_i)|u_i(x_i)|dx_i<\infty.
+  \end{equation}
+  
+  Рассмотрим несколько примеров.
+  
+  \subsection{Задача рассеяния на звёздных графах}
+  Рассмотрим задачу рассеяния на графе-звезде, содержащем 3 дуги и 1 вершину, все потенциалы нулевые.
+  \begin{figure}[!htb]
+  	\centering
+  	\includegraphics[scale=0.5]{star.jpg}
+  \end{figure}
+  Ищем решение в виде:
+  \[\begin{split}
+  \psi_1\left(x\right) &= C_1 e^{ikx} + C_2 e^{-ikx}, \\
+  \psi_2\left(x\right) &= C_3 e^{ikx} + C_4 e^{-ikx}, \\
+  \psi_3\left(x\right) &= C_5 e^{ikx} + C_6 e^{-ikx}.
+  \end{split}\]
+  
+  Сопутствующая система имеет вид:
+  \[\begin{cases}
+  \psi_{1}\left(k,0\right)=\psi_2\left(k,0\right), \\
+  \psi_{1}\left(k,0\right)=\psi_3\left(k,0\right), \\
+  \psi_1^\prime\left(k,0\right)+\psi_2^\prime\left(k,0\right)+\psi_3^\prime\left(k,0\right)=0.
+  \end{cases}
+  \]
+   Переписывая систему в терминах $C_1,C_2,C_3,C_4,C_5,C_6$, получим СЛАУ вида $Ac=b$ :
+   \[ A = \left(\begin{smallmatrix}
+   1 & -1 & 0 \\
+   1 & 0 & -1 \\
+   1 & 1 & 1
+   \end{smallmatrix}\right), b = \left(\begin{smallmatrix}
+   -1 \\
+   -1 \\
+   1
+   \end{smallmatrix}\right), \ 
+   \left(\begin{smallmatrix}
+   1 \\
+   0 \\
+   1
+   \end{smallmatrix}\right),
+   \left(\begin{smallmatrix}
+   0 \\
+   1 \\
+   1
+   \end{smallmatrix}\right).\]
+   
+   Решая эту систему, получим искомую матрицу рассеяния:
+   \[
+   S(k)=
+   \begin{pmatrix}
+   -1/3 & 2/3 & 2/3 \\
+   2/3 & -1/3 & 2/3 \\
+   2/3 & 2/3 & -1/3 
+   \end{pmatrix}
+   \]
+   
+   \subsection{Петля с $n$ полубесконечными рёбрами}
+   Рассмотрим граф,
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.5]{one-arrow.jpg}
+   \end{figure}
+   \\состоящий из петли и одного полубесконечного ребра. Предположим, что на петле длины $a$ задан некоторый константный потенциал, а на полубесконечном ребре потенциал нулевой.
+   Ищем решение в виде
+   \[\psi\left(k\right) = \left\{\psi_1\left(k,x\right), \psi_2\left(k,x\right)\right\}, \ \text{где}\]
+   \[
+   \psi_1 = c_1\cdot e^{\sqrt{u-k^2} \cdot x} + c_2\cdot e^{-\sqrt{u-k^2} \cdot x}, \ x \in \left[0,a\right],\]
+   \[\psi_2 = c_3 \cdot e^{ikx}+c_4 \cdot e^{-ikx}, \ x \in \left[0,+\infty\right)\]
+   
+   Сопутствующая система законов Кирхгофа имеет вид:
+   \[\begin{cases}
+   \psi_1\left(k,0\right)=\psi_1\left(k,a\right), \\
+   \psi_{1}\left(k,0\right)=\psi_2\left(k,0\right), \\
+   \psi_1^\prime\left(k,0\right)-\psi_1^\prime\left(k,a\right)+\psi_2^\prime\left(k,0\right)=0.
+   \end{cases}
+   \]
+   Без ограничений общности, $c_3=R, \ c_4 = 1$. Это предположение соответствует ситуации, в которой волновой пакет единичной амплитуды попадает в граф из бесконечно удалённой точки по бесконечному ребру, рассеивается на графе, а затем возвращается с некоторым коэффициентом $R$. Переписывая систему в терминах $c_1,c_2,R$, получим СЛАУ вида $Ac=b$:
+   
+   \[ A = \left(\begin{smallmatrix}
+   1-e^{\sqrt{u-k^2}} & 1-e^{-\sqrt{u-k^2}} & 0 \\
+   1 & 1 & -1 \\
+   \sqrt{u-k^2}-\sqrt{u-k^2} \cdot e^{\sqrt{u-k^2}} & -\sqrt{u-k^2}+\sqrt{u-k^2} \cdot e^{\sqrt{u-k^2}} & ik
+   \end{smallmatrix}\right)\]
+   \[b = \left(\begin{smallmatrix}
+   0 \\
+   1 \\
+   ik
+   \end{smallmatrix}\right)
+   \]
+   Обозначив $p=\sqrt{u-k^2}$, получим формулу для коэффициента отражения:
+   \begin{equation}
+   \label{OneDimensionalReflection}
+   R\left(k,u\right) = {\frac { \left( ik+2\,p \right) {e}^{2\,pa}-ik-4\,p{e}^{pa}+2\,p}{ \left( ik-2\,p \right) {e}^{2\,pa}-ik+4\,p{e}^{pa}-2\,p}}
+   \end{equation}
+     
+   Непосредственным вычислением можно убедиться, что 
+   \begin{theorem}
+   	$\left|R\left(k,u\right)\right| = 1$
+   \end{theorem}
+   
+   В случае $n=1$ матрица рассеяния одномерна: $S = \left(R\left(k,u\right)\right)$. 
+   В случае $n \geqslant 1$ матрица рассеяния имеет размер $(n-1) \cdot (n-1)$ (по количеству рёбер бесконечной длины).
+   
+   Физический смысл матрицы рассеяния понятен: в $i$-й строке на $i$-м месте находится коэффициент отражения $R_{ii}$, на $j$-м месте стоит коэффициент прохождения $T_{ij}$, $i \in \left\{1,\ldots,n-1\right\}, j \in \left\{1,\ldots,n-1\right\}\setminus i $.  Это соответствует ситуации, в которой волновой пакет единичной амплитуды попадает в граф из бесконечно удалённой точки по бесконечному ребру с номером $i$, рассеивается на графе, а затем возвращается с коэффициентом отражения $R_{ii}$ по ребру с номером $i$, с коэффициентами прохождения $T_{ij}$ по рёбрам с номерами $j \in \left\{1,\ldots,n-1\right\}\setminus i $.
+   
+   Для петли с $n$ полубесконечными рёбрами имеем СЛАУ $(n+1)\cdot (n+1)$ с матрицей:
+   \begin{figure}
+   	\centering
+   	\includegraphics[scale=0.5]{n-arrow.jpg}
+   \end{figure}
+   \[ A = \left(\begin{smallmatrix}
+   1-e^{\sqrt{u-k^2}} & 1-e^{-\sqrt{u-k^2}} & 0 & 0 & \ldots & 0 \\
+   1 & 1 & -1  & 0 & \ldots & 0 \\
+   1 & 1 & 0  & -1 & \ldots & 0 \\
+   \vdots & \vdots & \vdots  & \vdots & \ddots & \vdots \\
+   1 & 1 & 0  & 0 & \ldots & -1 \\
+   \sqrt{u-k^2}-\sqrt{u-k^2} \cdot e^{\sqrt{u-k^2}} & -\sqrt{u-k^2}+\sqrt{u-k^2} \cdot e^{\sqrt{u-k^2}} & ik & \ldots & \ldots & ik
+   \end{smallmatrix}\right)\]
+   и набором правых частей:
+   \[b = \left(\begin{smallmatrix}
+   0 \\
+   1 \\
+   0 \\
+   \vdots \\
+   0 \\
+   ik
+   \end{smallmatrix}\right), \ 
+   \left(\begin{smallmatrix}
+   0 \\
+   0 \\
+   1 \\
+   \vdots \\
+   0 \\
+   ik
+   \end{smallmatrix}\right), \ldots
+   \left(\begin{smallmatrix}
+   0 \\
+   0 \\
+   0 \\
+   \vdots \\
+   1 \\
+   ik
+   \end{smallmatrix}\right).
+   \]
+   Решая первую СЛАУ относительно $C_1, C_2, C_3, C_5, \ldots, C_{2n-1}$ с различными правыми частями, будем последовательно получать строки матрицы рассеяния: 
+   
+   \begin{itemize}
+   	\item $C_3 = R_{22}, \ C_5 = T_{23}, \ldots, C_{2n-1} = T_{2 \ 2n-1}$ 
+   	\item $C_3 = T_{32}, \ C_5 = R_{33}, \ldots, C_{2n-1} = T_{3 \ 2n-1} $
+   	\item $\cdots$ 
+   	\item $C_3 = T_{2n-1 \ 2}, \ C_5 = T_{2n-1 \ 3}, \ldots, C_{2n-1} = R_{2n-1 \  2n-1}$ 
+   \end{itemize}
+    
+   \pagebreak
+    
+   \subsection{Кольцо с $n$ полубесконечными рёбрами}
+   Также определённый интерес представляет задача рассеяния на кольцах с $n$ полубесконечными рёбрами. В качестве примера рассмотрим следующий граф с 3 рёбрами единичной длины, на компактной части задан константный потенциал:
+   \begin{figure}[h]
+   	\centering
+   	\includegraphics[scale=0.5]{arrow_graph.jpg}
+   \end{figure}
+   
+   Ищем решение в виде
+   \[\psi\left(k\right) = \left\{\psi_1\left(k,x\right), \psi_2\left(k,x\right)\right\}, \psi_3\left(k,x\right),\psi_4\left(k,x\right),\psi_5\left(k,x\right),\psi_6\left(k,x\right),\ \text{где}\]
+   \[\psi_1 = c_1 \cdot e^{ikx} + c_2 \cdot e^{-ikx}, \ x \in \left[0,1\right],\]
+   \[\psi_2 = c_3 \cdot e^{ikx} + c_4 \cdot e^{-ikx}, \ x \in \left[0,1\right],\]
+   \[\psi_3 = c_5 \cdot e^{ikx} + c_6 \cdot e^{-ikx}, \ x \in \left[0,1\right],\]
+   \[\psi_4 = c_7 \cdot e^{\sqrt{u-k^2}} + c_8 \cdot e^{-\sqrt{u-k^2}}, \ x \in \left[0, +\infty\right),\]
+   \[\psi_5 = c_9 \cdot e^{\sqrt{u-k^2}} + c_{10} \cdot e^{-\sqrt{u-k^2}}, \ x \in \left[0, +\infty\right),\]
+   \[\psi_6 = c_{11} \cdot e^{\sqrt{u-k^2}} + c_{12} \cdot e^{-\sqrt{u-k^2}}, \ x \in \left[0, +\infty\right).\]
+   Обозначив $p = \sqrt{u-k^2}$, получим сопутствующую систему законов Кирхгофа с нулевой правой частью:
+   \[ A = \left(\begin{smallmatrix}
+   1 & 1 & 0 & 0 & 0 & 0 & -e^{p} & -e^{-p} & 0 & 0 & 0 & 0 \\
+   1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & -1 & 0 & 0 \\
+   ik & -ik & 0 & 0 & 0 & 0 & -pe^{p} & pe^{-p} & p & -p & 0 & 0\\
+   0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & -e^{p} & -e^{-p} & 0 & 0 \\
+   0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & -1 \\
+   0 & 0 & ik & -ik & 0 & 0 & 0 & 0 & -pe^{p} & pe^{-p} & p & -p \\
+   0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & -e^{p} & -e^{-p} \\
+   0 & 0 & 0 & 0 & 1 & 1 & -1 & -1 & 0 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 0 & ik & -ik & p & -p & 0 & 0 & -pe^{p} & pe^{-p} \\
+   \end{smallmatrix}\right)\]
+   Подставляя поочерёдно в эту систему наборы 
+   \[
+   \begin{cases}
+   c_1 = R_{11},\\
+   c_2 = 1, \\
+   c_3 = T_{12}, \\
+   c_4 = 0, \\
+   c_5 = T_{13}, \\
+   c_6 = 0,
+   \end{cases}, \ 
+   \begin{cases}
+   c_1 = T_{21},\\
+   c_2 = 0, \\
+   c_3 = R_{12}, \\
+   c_4 = 1, \\
+   c_5 = T_{23}, \\
+   c_6 = 0,
+   \end{cases}, \
+   \begin{cases}
+   c_1 = T_{31},\\
+   c_2 = 0, \\
+   c_3 = T_{32}, \\
+   c_4 = 0, \\
+   c_5 = R_{13}, \\
+   c_6 = 1,
+   \end{cases}
+   \]
+   получим искомые данные рассеяния:
+   \begin{itemize}
+  	 \item $C_1 = R_{11}, C_3 = T_{12}, C_5 = T_{13}$, 
+  	 \item $C_1 = T_{21}, C_3 = R_{22}, C_5 = T_{23}$,  
+ 	 \item $C_1 = T_{31}, C_3 = T_{32}, C_5 = R_{33}$.
+   \end{itemize}
+
+   TODO: выписать явный вид решений
+   
+   \pagebreak
+   
+   \section{Спектральная хирургия квантовых графов}
+   Основным приложением теории квантового рассеяния является моделирование полупроводниковых структур. Но в настоящих полупроводниках число молекул очень велико! Поэтому для решения задач моделирования используют методы хирургии квантовых графов. Основная идея данных методов заключается в том, что сначала решается дифференциальная задача рассеяния на примитивном графе, а затем примитивы склеиваются друг с другом согласно некоторому правилу с известным преобразованием данных рассеяния.
+   
+   В работе А.~Н.~Бондаренко и В.~А.~Дедка \cite{SpectralSurgery} рассмотрен метод склейки графов, содержащих неизвестную компактную часть и две бесконечные дуги. Предполагается, что потенциалы на бесконечных рёбрах нулевые.
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.3]{skleika1.png}
+   \end{figure}
+
+   Была поставлена задача: рассмотреть процесс склейки двух графов, содержащих неизвестную компактную часть и три полубесконечных дуги, по двум парам дуг.
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.5]{g_prime.png}
+   \end{figure}
+
+   Рассмотрим граф $G^\prime$, его данные рассеяния известны. Для решения поставленной задачи построим рассеивающий оператор $SC$, сопоставляющий решениям с двух правых бесконечных дуг решение на левой бесконечной дуге.
+   
+   Поскольку мы знаем общий вид решения на полубесконечных дугах
+   \begin{equation}
+   \begin{split}
+   \label{GeneralSolution1}
+   \psi_1\left(x\right) &= a e^{-ikx} + b e^{ikx}, \\
+   \psi_2\left(x\right) &= c e^{-ikx} + d e^{ikx}, \\
+   \psi_3\left(x\right) &= e e^{-ikx} + f e^{ikx},
+   \end{split}
+   \end{equation}
+
+   то наша задача состоит в построении линейного оператора $SC$, такого что:
+   \[SC\left(
+   \begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right) = \left(\begin{array}{c}
+   a \\
+   b
+   \end{array}\right)\]
+   
+   Разложим волновые функции по всевозможным исходам:
+   \begin{equation}
+   \label{GenetalSolution2}
+   \begin{aligned}
+   \psi_1 &= \alpha\left(e^{-ikx} + Re^{ikx}\right) + \beta\left(Te^{ikx}\right) + \gamma \left(Te^{ikx}\right) = \\
+   &= \alpha e^{-ikx} + \left(\alpha R + \beta T + \gamma T\right) e^{ikx}, \\
+   \psi_2 &= \alpha \left(T e^{ikx}\right) + \beta \left(e^{-ikx} + R e^{ikx}\right) + \gamma \left(T e^{ikx}\right) = \\
+   &= \beta e^{-ikx} + \left(\alpha T + \beta R + \gamma T\right) e^{ikx}, \\
+   \psi_3 &= \alpha \left(T e^{ikx}\right) + \beta \left(T e^{ikx}\right) + \gamma \left(e^{-ikx} + R e^{ikx}\right) = \\
+   &= \gamma e^{-ikx} + \left(\alpha T + \beta T + \gamma R\right) e^{ikx}.
+   \end{aligned}
+   \end{equation}
+   
+   Тогда из (\ref{GeneralSolution1}) и (\ref{GenetalSolution2}) получим СЛАУ на $a, b, c, d, e, f$:
+   Получили СЛАУ на $a, b, c, d, e, f$:
+   \[
+   \begin{cases}
+   a = \alpha, \\
+   b = \alpha R + \beta T + \gamma T, \\
+   c = \beta, \\
+   d = \alpha T + \beta R + \gamma T, \\
+   e = \gamma, \\
+   f = \alpha T + \beta T + \gamma R.
+   \end{cases}
+   \]
+   Выражая $a, b$ через $c, d, e, f$, получим:
+   \[
+   \begin{aligned}
+   a &= \left(f - cT - eR\right)T^{-1} \\
+   b &= \left(f - cT - eR\right)T^{-1}R + cT + eT
+   \end{aligned}
+   \]
+   А также условие совместности:
+   \begin{equation}
+   \label{compabilityCondition}
+   f - cT - eR = d - cR - eT
+   \end{equation}
+   
+   Тогда
+   \[
+   \begin{aligned}
+   SC\left(
+   \begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right) &= \left(\begin{array}{c}
+   a \\
+   b
+   \end{array}\right) = 
+   \left(\begin{array}{c}
+   \left(f - cT - eR\right)T^{-1} \\
+   \left(f - cT - eR\right)T^{-1}R + cT + eT
+   \end{array}\right) =\\
+   &= \left(\begin{array}{cccc}
+   -1 & 0 & -RT^{-1} & T^{-1} \\
+   T-R & 0 & T-RT^{-1}R & T^{-1}R
+   \end{array}\right)
+   \left(\begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right)
+   \end{aligned}\]
+   
+   Приступим к слейке графов $G^\prime$ и $G^{\prime \prime}$:
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.54]{skleika2.png} \\
+   	\includegraphics[scale=0.45]{skleika3.png}
+   \end{figure}
+
+   Ясно, что $\psi_1\left(x\right), \varphi_1\left(x\right), \varphi_1\left(1-x\right), \varphi_2\left(x\right), \varphi_2\left(1-x\right), \psi_2\left(x\right)$ ~--- решения задач рассеяния для графов  $G^\prime$ и $G^{\prime \prime}$ на полубесконечных дугах.
+   
+   Пусть решения на склеенном графе определены следующим образом:
+   \begin{itemize}
+   	\item $ \psi_1\left(x\right) = e^{-ikx} + R^\prime e^{ikx} $
+   	\item $ \varphi_1\left(x\right)  = a e^{-ikx} + b e^{ikx} $
+   	\item $ \varphi_2\left(x\right) = c e^{-iks} + d e^{ikx} $
+   	\item $ \psi_2\left(x\right) = T^\prime e^{ikx}$
+   \end{itemize}
+   Заметим, что
+   \[
+   \begin{aligned}
+   \varphi_1\left(1-x\right) &= b e^{ik} e^{-ikx} + a e^{-ik} e^{ikx}, \\
+   \varphi_2\left(1-x\right) &= d e^{ik} e^{-ikx} + c e^{-ik} e^{ikx},
+   \end{aligned}\]
+   
+   Тогда
+   \begin{equation}
+   \label{boundaryCond1}
+   SC\left(
+   \begin{array}{c}
+   a \\
+   b \\
+   c \\
+   d
+   \end{array}\right) = \left(\begin{array}{c}
+   1 \\
+   R^\prime
+   \end{array}\right),
+   \end{equation}
+   \begin{equation}
+   \label{boundaryCond2}
+   SC\left(
+   \begin{array}{c}
+   b e^{ik} \\
+   a e^{-ik}\\
+   d e^{ik}\\
+   c e^{-ik}
+   \end{array}\right) = \left(\begin{array}{c}
+   0 \\
+   T^\prime
+   \end{array}\right)   
+   \end{equation}
+   Отсюда получаем два уравнения на коэффициенты $a, b, c, d$:
+   \[
+   \begin{aligned}
+   \left(d - aT -cR\right)T^{-1} &= 1 \\
+   \left(c e^{-ik} - b e^{ik} T - d e^{ik}R\right) T^{-1} &= 0
+   \end{aligned}\]
+   
+   Оставшиеся 2 уравнения получим из условия совместности (\ref{compabilityCondition}) для оператора $SC$:
+   \[
+   \begin{aligned}
+   d - aT -cR &= b - aR - cT \\
+   c e^{-ik} - b e^{ik}T - d e^{ik} R &= a e^{-ik} - b e^{ik}R - d e^{ik} T
+   \end{aligned}
+   \]
+   Запишем получившуюся СЛАУ в матричном виде:
+   \[
+   \begin{pmatrix}
+   -T & 0 & -R & 1\\ 
+   0 & -e^{ik}T  & e^{-ik} &-e^{ik}R \\ 
+   R-T & -1 & T-R & 1\\ 
+   -e^{-ik} & e^{ik}\left(R-T\right) & e^{-ik} & e^{ik}\left(T-R\right)
+   \end{pmatrix}
+   \begin{pmatrix}
+   a \\
+   b \\
+   c \\
+   d
+   \end{pmatrix} = 
+   \begin{pmatrix}
+   T \\
+   0 \\
+   0 \\
+   0 
+   \end{pmatrix}\]
+   
+   Зная решение этой системы,\[
+   \left(\begin{array}{c}
+   a \\
+   b \\
+   c \\
+   d
+   \end{array} \right) = 
+   \left( \begin {array}{c} -{\frac { \left( R+T \right) {{\rm e}^{ik}}T
+   	}{-{{\rm e}^{-ik}}+ \left(R+T\right)^2 {{\rm e}^{ik}
+   }}}\\ \noalign{\medskip}-{\frac {{{\rm e}^{-ik}}T}{-{{\rm e}^{-ik}}+
+   		\left(R+T\right)^2 {{\rm e}^{ik}}}}
+   \\ \noalign{\medskip}-{\frac { \left( R+T \right) {{\rm e}^{ik}}T}{-{
+   			{\rm e}^{-ik}}+ \left(R+T\right)^2 {{\rm e}^{ik}}}}
+   \\ \noalign{\medskip}-{\frac {{{\rm e}^{-ik}}T}{-{{\rm e}^{-ik}}+
+   		\left(R+T\right)^2 {{\rm e}^{ik}}}}\end {array}
+   \right) 
+   \]
+   Из соотношения (\ref{boundaryCond1}) получим искомое значение коэффициента $R^\prime$:
+
+   \[
+   R^\prime = {\frac {-{{\rm e}^{-ik}}R+{{\rm e}^{ik}} \left( R-T \right)  \left( R+
+   		2\,T \right)  \left( R+T \right) }{-{{\rm e}^{-ik}}+ \left( R+T\right)^2 {{\rm e}^{ik}}}}
+   \]
+   Аналогично, из соотношения (\ref{boundaryCond2}) получим $T^\prime$:
+   \[
+   T^\prime = {\frac {-R \left( R+T \right) {{\rm e}^{ik}}{e}^{-ik}+{e}^{ik}{{\rm e}
+   			^{-ik}} \left( R+2\,T \right)  \left( R-T \right) }{-{{\rm e}^{-ik}}+
+   		\left(R+T\right)^2 {{\rm e}^{ik}}}}
+   \]
+   
+   Однако приведённые выше выкладки верны только при выполнении условий $T \neq 0$ и $-e^{-ik} + \left(R+T\right)^2 e^{ik} \neq 0$. Рассмотрим их подробнее.
+   
+   Условие $T = 0$ эквивалентно полному отражению волны при попадании частицы в компактную часть графа при движениии по полубесконечному ребру. Поскольку склеиваемые графы $G^\prime$ и $G^{\prime\prime}$ имеют одинаковые данные рассеяния, то итоговая $S$-матрица будет иметь вид:
+   \[
+   S(k)=\left(%
+   \begin{array}{cc}
+   -1 & 0 \\
+   0 & -1 \\
+   \end{array}%
+   \right)
+   \]
+   
+   Условие $-e^{-ik} + \left(R+T\right)^2 e^{ik} \neq 0$ может показаться недостижимым при добавлении условия нормировки $RR^* +TT^* +TT^* = 1$, однако можно подобрать такие значения $R, \ T, \ k$, что знаменатель обратится в нуль, но при этом будет выполнено условие нормировки. Чтобы показать это, перепишем неравенство:
+   \[
+   \begin{aligned}
+   -e^{-ik} + \left(R+T\right)^2 e^{ik} &\neq 0 \\
+   \left(R+T\right)^2 e^{ik} &= e^{-ik} \\
+   \left(R+T\right)^2 &= e^{-2ik} \\
+   R+T &= e^{-ik} \\
+   T &= -R + e^{-ik}
+   \end{aligned}
+   \]
+   
+   И подставим полученное выражение для $T$ в условие нормировки:
+   
+   \[
+   \begin{aligned}
+   RR^* + 2TT^* &= 1\\
+   RR^* + 2\left(-R + e^{-ik}\right)\left(-R^* + e^{ik}\right) &= 1
+   \end{aligned}\]
+   \[
+   \begin{aligned}
+   RR^* + 2\left(RR^* -Re^{ik} -R^*e^{-ik} + 1\right) &= 1\\
+   3RR^* -2Re^{ik}-2R^*e^{-ik} &= -1
+   \end{aligned}
+   \]
+   
+   Запишем коэффициент отражения в показательной форме: $R = \rho e^{i \varphi}$.
+   
+   Тогда полученное ранее выражение примет вид:
+   \[
+   3 \rho^2 -2 \rho e^{i\left(\varphi+k\right)} -2 \rho e^{-i\left(\varphi+k\right)} = 1
+   \]
+   
+   Выберем $\varphi$ таким образом, чтобы $\varphi + k = 0$. Тогда определим $\rho$ из квадратного уравнения $3\rho^2 -4\rho -1 = 0$.
+   Это уравнение имеет один положительный корень. Значит, удалось подобрать такие $R, \ T, \ k$, при которых полученное правило склейки не работает. Возможно, условие $-e^{-ik} + \left(R+T\right)^2 e^{ik} \neq 0$ всё же будет являться недостижимым в задачах рассеяния, но для того, чтобы показать это, нужно привлекать дополнительные соображения.
+   
+   Таким образом, доказана
+   
+   \begin{theorem}
+   	Пусть даны два одинаковых графа $G^\prime, \ G^{\prime\prime}$, содержащих три полубесконечных дуги и неизвестную компактную часть. Пусть для данных рассеяния графов  $G^\prime, \ G^{\prime\prime}$ выполнено условие совместности. Пусть также $T \neq 0, \ R+T \neq e^{-ik}$
+   	
+   	Тогда данные рассеяния графа, полученного склейкой графов $G^\prime, \ G^{\prime\prime}$ по двум полубесконечным дугам в дугу единичной длины, имеют вид $\left(\begin{matrix}
+   	R^\prime & T^\prime \\
+   	T^\prime & R^\prime
+   	\end{matrix}\right)$, где
+   	\[
+   	\begin{aligned}
+   	R^\prime &= {\frac {-{{\rm e}^{-ik}}R+{{\rm e}^{ik}} \left( R-T \right)  \left( R+
+		2\,T \right)  \left( R+T \right) }{-{{\rm e}^{-ik}}+ \left(R+T\right)^2 {{\rm e}^{ik}}}}, \\
+    T^\prime &= {\frac {-R \left( R+T \right)+\left( R+2\,T \right)  \left( R-T \right) }{-{{\rm e}^{-ik}}+
+		\left(R+T\right)^2 {{\rm e}^{ik}}}}.
+   	\end{aligned}\]
+   \end{theorem}
+
+   Основное преимущество данного подхода заключается в том, что для решения задачи рассеяния на полупроводниковых структурах сначала решается относительно простая дифференциальная задача для примитивного графа, а затем при помощи алгебраических операций это решение масштабируется до всего искомого графа.
    
    
 \newpage.
@@ -370,7 +902,7 @@
 	
 	\bibitem{Landau} Л.~Д.~Ландау, Е.~М.~Лифшиц, {\it Квантовая механика (нерелятивистская теория)}, Издание 4-е, М.:Наука 1989, 768 с. - (<<Теоретическая физика>>, том \RomanNumeralCaps{3}) - ISBN 5-02-014421-5.
 	
-	\bibitem{SMatrix} Л.~Д.~Фаддеев, {\it Свойства S-матрицы одномерного уравнения Шрёдингера}, Труды МИАН, 1964, Т.73, с. 314--336.
+	\bibitem{SMatrix} Л.~Д.~Фаддеев, {\it Свойства $S$-матрицы одномерного уравнения Шрёдингера}, Труды МИАН, 1964, Т.73, с. 314--336.
 	
 	
 	
