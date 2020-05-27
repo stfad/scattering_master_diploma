@@ -921,6 +921,76 @@
    \[ R\left(k,u\right) =
    \frac{-4p^2 \left(e^{pa}-1\right)^2 + k^2 \left(e^{pa}+1\right)^2}{4p^2 \left(e^{pa}-1\right)^2 + k^2 \left(e^{pa}+1\right)^2} + i \frac{-4pk\left(e^{2pa}-1\right)}{4p^2 \left(e^{pa}-1\right)^2 + k^2 \left(e^{pa}+1\right)^2}.\]
    Заметим, что $R\left(-k,u\right) = \overline{R\left(k,u\right)}$, тогда в силу унитарности $R$ получаем искомое свойство.  
+   
+   Как изменяются данные рассеяния при возмущениях константного потенциала?
+   Чтобы понять это, рассмотрим поверхность, соответствующую вещественной части коэффициента отражения (\ref{OneDimensionalReflection}):
+   
+   \begin{figure}[!htb]
+   	\begin{minipage}[h]{0.49\linewidth}
+   		\center{\includegraphics[width=\linewidth]{real_surface.jpg}}
+   	\end{minipage}
+      	\begin{minipage}[h]{0.49\linewidth}
+   	\center{\includegraphics[width=\linewidth]{real_surface_top.jpg}}
+   \end{minipage}
+   \caption{Вещественная часть коэффициента отражения}
+   \label{fig:real}
+   \end{figure}
+   
+   \begin{figure}[!htb]
+   \centering
+   \includegraphics[scale=0.35]{real.jpg}
+   \caption{Вещественная часть коэффициента отражения при различных значениях $u$}
+   \end{figure}
+
+   Из построений видно, что полученное решение напоминает набор параболических складок, гладко склеенных друг с другом. 
+   При вариации константного потенциала на одном из рёбер рассматриваемого графа возникают ситуации, в которых сечение поверхности наталкивается на вершину новой параболы, что вызывает скачки искомого решения, а также препятствует сходимости данных рассеяния.
+   Аналогичные наблюдения верны и для мнимой части коэффициента отражения:
+
+   \begin{figure}[!htb]
+   	\begin{minipage}[h]{0.49\linewidth}
+   		\center{\includegraphics[width=\linewidth]{imag_surface.jpg}}
+   	\end{minipage}
+   	\begin{minipage}[h]{0.49\linewidth}
+   		\center{\includegraphics[width=\linewidth]{imag_surface_top.jpg}}
+   	\end{minipage}
+   	\caption{Мнимая часть коэффициента отражения}
+   	\label{fig:imag}
+   \end{figure}
+
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.35]{imag.jpg}
+   	\caption{Мнимая часть коэффициента отражения при различных значениях $u$}
+   \end{figure}
+
+   Причина скачков ~--- это особенности, являющиеся семейством вложенных друг в друга парабол. Получим их явный вид, определив нули знаменателя (\ref{OneDimensionalReflection}):
+   
+   \[\left( ik-2\,p \right) {e}^{2\,pa}-ik+4\,p{e}^{pa}-2\,p = 0 \longleftrightarrow \Re\left(\ldots\right) = 0, \Im\left(\ldots\right) = 0\]
+   Следовательно, для вещественной части имеем:
+   \begin{align*}
+   -2pe^{2pa}+4pe^{pa}-2p &= 0 \\ e^{2pp} - 2e^{pa}+1 &= 0 \\
+   \left(e^{pa}-1\right)^2 &= 0 \\
+   e^{pa} &= 1 \\
+   p &= \frac{2\pi n i}{a}, \ n \in \mathbb{Z}
+   \end{align*}
+   Для мнимой части коэффициента отражения имеем:
+   \begin{align*}
+   ke^{2pa} &=k \\
+   e^{2pa} &= 1 \\
+   p &= \frac{\pi n i}{a}
+   \end{align*}
+   Учитывая $p = \sqrt{u-k^2}$, получаем $\sqrt{u-k^2} = \frac{2\pi n i}{a}, n \in \mathbb{Z}$, и, как следствие,
+   \[u = k^2 - \frac{4 \pi^2 n^2}{a^2}, \ n \in \mathbb{N}.
+   \]
+   
+   Найденные особенности коэффициента отражения также присутствуют в решениях задачи рассеяния в графах-петлях и графах-кольцах с $n$ полубесконечными рёбрами.
+   
+   \subsection{МЕТОД МНОЖЕСТВЕННОГО РАССЕЯНИЯ}
+   В разработке...
+   
+   \newpage
+   \section{ЗАКЛЮЧЕНИЕ}
+   В разработке...
 
   
    
