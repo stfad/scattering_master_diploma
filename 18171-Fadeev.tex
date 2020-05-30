@@ -593,6 +593,8 @@
    \end{figure}
 
    Была поставлена задача: рассмотреть процесс склейки двух графов, содержащих неизвестную компактную часть и три полубесконечных дуги, по двум парам дуг.
+   
+   \subsection{СКЛЕЙКА ПАРЫ ГРАФОВ С ОДИНАКОВЫМИ ДАННЫМИ РАССЕЯНИЯ}
    \begin{figure}[!htb]
    	\centering
    	\includegraphics[scale=0.5]{g_prime.png}
@@ -624,19 +626,19 @@
    
    Разложим волновые функции по всевозможным исходам:
    \begin{equation}
-   \label{GenetalSolution2}
+   \label{GeneralSolution2}
    \begin{aligned}
-   \psi_1 &= \alpha\left(e^{-ikx} + Re^{ikx}\right) + \beta\left(Te^{ikx}\right) + \gamma \left(Te^{ikx}\right) = \\
+   \psi_1(x) &= \alpha\left(e^{-ikx} + Re^{ikx}\right) + \beta\left(Te^{ikx}\right) + \gamma \left(Te^{ikx}\right) = \\
    &= \alpha e^{-ikx} + \left(\alpha R + \beta T + \gamma T\right) e^{ikx}, \\
-   \psi_2 &= \alpha \left(T e^{ikx}\right) + \beta \left(e^{-ikx} + R e^{ikx}\right) + \gamma \left(T e^{ikx}\right) = \\
+   \psi_2(x) &= \alpha \left(T e^{ikx}\right) + \beta \left(e^{-ikx} + R e^{ikx}\right) + \gamma \left(T e^{ikx}\right) = \\
    &= \beta e^{-ikx} + \left(\alpha T + \beta R + \gamma T\right) e^{ikx}, \\
-   \psi_3 &= \alpha \left(T e^{ikx}\right) + \beta \left(T e^{ikx}\right) + \gamma \left(e^{-ikx} + R e^{ikx}\right) = \\
+   \psi_3(x) &= \alpha \left(T e^{ikx}\right) + \beta \left(T e^{ikx}\right) + \gamma \left(e^{-ikx} + R e^{ikx}\right) = \\
    &= \gamma e^{-ikx} + \left(\alpha T + \beta T + \gamma R\right) e^{ikx}.
    \end{aligned}
    \end{equation}
    
-   Тогда из (\ref{GeneralSolution1}) и (\ref{GenetalSolution2}) получим СЛАУ на $a, b, c, d, e, f$:
-   Получили СЛАУ на $a, b, c, d, e, f$:
+   Тогда из (\ref{GeneralSolution1}) и (\ref{GeneralSolution2}) получим СЛАУ на $a, b, c, d, e, f$:
+
    \[
    \begin{cases}
    a = \alpha, \\
@@ -702,7 +704,7 @@
    \begin{itemize}
    	\item $ \psi_1\left(x\right) = e^{-ikx} + R^\prime e^{ikx} $
    	\item $ \varphi_1\left(x\right)  = a e^{-ikx} + b e^{ikx} $
-   	\item $ \varphi_2\left(x\right) = c e^{-iks} + d e^{ikx} $
+   	\item $ \varphi_2\left(x\right) = c e^{-ikx} + d e^{ikx} $
    	\item $ \psi_2\left(x\right) = T^\prime e^{ikx}$
    \end{itemize}
    Заметим, что
@@ -799,9 +801,7 @@
    \]
    Аналогично, из соотношения (\ref{boundaryCond2}) получим $T^\prime$:
    \[
-   T^\prime = {\frac {-R \left( R+T \right) {{\rm e}^{ik}}{e}^{-ik}+{e}^{ik}{{\rm e}
-   			^{-ik}} \left( R+2\,T \right)  \left( R-T \right) }{-{{\rm e}^{-ik}}+
-   		\left(R+T\right)^2 {{\rm e}^{ik}}}}
+   T^\prime = {\frac {-2{T}^{2}}{-{{\rm e}^{-ik}}+ \left(R+T\right)^2 {{\rm e}^{ik}}}}
    \]
    
    Однако приведённые выше выкладки верны только при выполнении условий $T \neq 0$ и $-e^{-ik} + \left(R+T\right)^2 e^{ik} \neq 0$. Рассмотрим их подробнее.
@@ -864,10 +864,277 @@
    	\begin{aligned}
    	R^\prime &= {\frac {-{{\rm e}^{-ik}}R+{{\rm e}^{ik}} \left( R-T \right)  \left( R+
 		2\,T \right)  \left( R+T \right) }{-{{\rm e}^{-ik}}+ \left(R+T\right)^2 {{\rm e}^{ik}}}}, \\
-    T^\prime &= {\frac {-R \left( R+T \right)+\left( R+2\,T \right)  \left( R-T \right) }{-{{\rm e}^{-ik}}+
-		\left(R+T\right)^2 {{\rm e}^{ik}}}}.
+    T^\prime &= {\frac {-2{T}^{2}}{-{{\rm e}^{-ik}}+ \left(R+T\right)^2 {{\rm e}^{ik}}}}.
    	\end{aligned}\]
    \end{theorem}
+
+   \subsection{СКЛЕЙКА ПАРЫ ГРАФОВ С ПРОИЗВОЛЬНЫМИ ДАННЫМИ РАССЕЯНИЯ}
+   
+   Обобщим полученный результат на случай пары графов, содержащих 3 полубесконечных дуги, имеющих произвольные данные рассеяния.
+   
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.5]{g_prime.png}
+   \end{figure}
+   
+   Аналогично предыдущему пункту, рассмотрим граф $G^\prime$ с известными данными рассеяния 
+   \[
+      S^\prime(k)=\left(%
+   \begin{array}{cc}
+   R_{11}^\prime & T_{12}^\prime \\
+   T_{21}^\prime & R_{22}^\prime \\
+   \end{array}%
+   \right).
+   \]
+   
+   Построим рассеивающий оператор $SC_{rl}^\prime$, \ сопоставляющий решениям с двух правых полубесконечных дуг решение на левой полубесконечной дуге.
+   
+   Общий вид решений на полубесконечных дугах известен:
+   \begin{equation}
+   \label{GeneralizedSolution1}
+   \begin{split}
+   \psi_1\left(x\right) &= a e^{-ikx} + b e^{ikx}, \\
+   \psi_2\left(x\right) &= c e^{-ikx} + d e^{ikx}, \\
+   \psi_3\left(x\right) &= e e^{-ikx} + f e^{ikx},
+   \end{split}
+   \end{equation}
+   
+   Будем строить линейный оператор $SC_{rl}^\prime$, \ удовлетворяющий условию:
+   \[SC_{rl}^\prime\left(
+   \begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right) = \left(\begin{array}{c}
+   a \\
+   b
+   \end{array}\right)\]
+   
+   Раскладывая волновые функции по всевозможным исходам,
+   \begin{equation}
+   \label{GeneralizedSolution2}
+   \begin{aligned}
+   \psi_1(x) &= \alpha\left(e^{-ikx} + R_{11}^\prime e^{ikx}\right) + \beta\left(T_{21}^\prime e^{ikx}\right) + \gamma \left(T_{31}^\prime e^{ikx}\right) = \\
+   &= \alpha e^{-ikx} + \left(\alpha R_{11}^\prime  + \beta T_{21}^\prime  + \gamma T_{31}^\prime \right) e^{ikx}, \\
+   \psi_2(x) &= \alpha \left(T_{12}^\prime  e^{ikx}\right) + \beta \left(e^{-ikx} + R_{22}^\prime  e^{ikx}\right) + \gamma \left(T_{32}^\prime  e^{ikx}\right) = \\
+   &= \beta e^{-ikx} + \left(\alpha T_{12}^\prime  + \beta R_{22}^\prime  + \gamma T_{32}^\prime \right) e^{ikx}, \\
+   \psi_3(x) &= \alpha \left(T_{13}^\prime  e^{ikx}\right) + \beta \left(T_{23}^\prime  e^{ikx}\right) + \gamma \left(e^{-ikx} + R_{33}^\prime  e^{ikx}\right) = \\
+   &= \gamma e^{-ikx} + \left(\alpha T_{13}^\prime  + \beta T_{23}^\prime  + \gamma R_{33}^\prime \right) e^{ikx}.
+   \end{aligned}
+   \end{equation}
+   
+   Из (\ref{GeneralizedSolution1}) и (\ref{GeneralizedSolution2}) получим СЛАУ на $a, b, c, d, e, f$:
+   
+   \[
+   \begin{cases}
+   a = \alpha, \\
+   b = \alpha R_{11}^\prime  + \beta T_{21}^\prime  + \gamma T_{31}^\prime , \\
+   c = \beta, \\
+   d = \alpha T_{12}^\prime  + \beta R_{22}^\prime  + \gamma T_{32}^\prime , \\
+   e = \gamma, \\
+   f = \alpha T_{13}^\prime  + \beta T_{23}^\prime  + \gamma R_{33}.
+   \end{cases}
+   \]
+   
+   Выражая $a, b$ через $c, d, e, f$, получим:
+   \[
+   \begin{aligned}
+   a &= \left(f - cT_{23}^\prime  - eR_{33}^\prime \right)\left(T_{13}^\prime\right)^{-1} \\
+   b &= \left(f - cT_{23}^\prime  - eR_{33}^\prime \right)\left(T_{13}^\prime\right)^{-1}R_{11}^\prime + cT_{21}^\prime + eT_{31}^\prime
+   \end{aligned}
+   \]
+   С необходимым условием совместности:
+   \begin{equation}
+   \label{compabilityConditionGeneralized}
+   \left(f - cT_{23}^\prime - eR_{33}^\prime\right)\left(T_{13}^\prime\right)^{-1} = \left(d - cR_{22}^\prime - eT_{32}^\prime\right)\left(T_{12}^\prime\right)^{-1}.
+   \end{equation}
+   
+   Тогда
+   \[
+   \begin{aligned}
+   SC_{rl}^\prime\left(
+   \begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right) &= \left(\begin{array}{c}
+   a \\
+   b
+   \end{array}\right) = 
+   \left(\begin{array}{c}
+   \left(f - cT_{23}^\prime - eR_{33}^\prime\right)\left(T_{13}^\prime\right)^{-1} \\
+   \left(f - cT_{23}^\prime - eR_{33}^\prime\right)\left(T_{13}^\prime\right)^{-1}R_{11}^\prime + cT_{21}^\prime + eT_{31}^\prime
+   \end{array}\right) =\\
+   &= \left(\begin{array}{cccc}
+   -T_{23}^\prime T_{13}^\prime & 0 & -R_{33}^\prime \left(T_{13}^\prime\right)^{-1} & \left(T_{13}^\prime\right)^{-1} \\
+   T_{21}^\prime- T_{23}^\prime\left(T_{13}^\prime\right)^{-1}R_{11}^\prime & 0 & T_{31}^\prime - R_{33}^\prime \left(T_{13}^\prime\right)^{-1}R_{11}^\prime & \left(T_{13}^\prime\right)^{-1}R_{11}^\prime
+   \end{array}\right)
+   \left(\begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right)
+   \end{aligned}\]
+   
+   Далее будет производиться склейка графа $G^\prime$ с графом $G^{\prime\prime}$, имеющим три полубесконечных дуги, неизвестную компактную часть, а также известные данные рассеяния 
+   \[
+   S^{\prime\prime}(k)=\left(%
+   \begin{array}{cc}
+   R_{11}^{\prime\prime} & T_{12}^{\prime\prime} \\
+   T_{21}^{\prime\prime} & R_{22}^{\prime\prime} \\
+   \end{array}%
+   \right).
+   \]
+   
+   Для этого понадобится оператор $SC_{lr}^{\prime\prime}$, \ сопоставляющий решениям с двух левых полубесконечных дуг графа $G^{\prime\prime}$ решение на правой полубесконечной дуге. Очевидно, что
+    \[
+   \begin{aligned}
+   SC_{rl}^{\prime\prime}\left(
+   \begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right) &= \left(\begin{array}{cccc}
+   -T_{23}^{\prime\prime} T_{13}^{\prime\prime} & 0 & -R_{33}^{\prime\prime} \left(T_{13}^{\prime\prime}\right)^{-1} & \left(T_{13}^{\prime\prime}\right)^{-1} \\
+   T_{21}^{\prime\prime}- T_{23}^{\prime\prime}\left(T_{13}^{\prime\prime}\right)^{-1}R_{11}^{\prime\prime} & 0 & T_{31}^{\prime\prime} - R_{33}^{\prime\prime} \left(T_{13}^{\prime\prime}\right)^{-1}R_{11}^{\prime\prime} & \left(T_{13}^{\prime\prime}\right)^{-1}R_{11}^{\prime\prime}
+   \end{array}\right)
+   \left(\begin{array}{c}
+   c \\
+   d \\
+   e \\
+   f
+   \end{array}\right).
+   \end{aligned}\]
+   
+   Приступим к слейке графов $G^\prime$ и $G^{\prime \prime}$:
+   \begin{figure}[!htb]
+   	\centering
+   	\includegraphics[scale=0.54]{skleika2.png} \\
+   	\includegraphics[scale=0.45]{skleika3.png}
+   \end{figure}
+   
+   Ясно, что $\psi_1\left(x\right), \varphi_1\left(x\right), \varphi_1\left(1-x\right), \varphi_2\left(x\right), \varphi_2\left(1-x\right), \psi_2\left(x\right)$ ~--- решения задач рассеяния для графов  $G^\prime$ и $G^{\prime \prime}$ на полубесконечных дугах.
+   
+   Пусть решения на склеенном графе определены следующим образом:
+   \begin{itemize}
+   	\item $ \psi_1\left(x\right) = e^{-ikx} + R_{11} e^{ikx} $
+   	\item $ \varphi_1\left(x\right)  = a e^{-ikx} + b e^{ikx} $
+   	\item $ \varphi_2\left(x\right) = c e^{-ikx} + d e^{ikx} $
+   	\item $ \psi_2\left(x\right) = T_{12} e^{ikx}$
+   \end{itemize}
+    Заметим, что
+   \[
+   \begin{aligned}
+   \varphi_1\left(l_1-x\right) &= b e^{ikl_1} e^{-ikx} + a e^{-ikl_1} e^{ikx}, \\
+   \varphi_2\left(l_2-x\right) &= d e^{ikl_2} e^{-ikx} + c e^{-ikl_2} e^{ikx},
+   \end{aligned}\]
+   
+   Тогда
+   \begin{equation}
+   \label{generalizedBoundaryCond1}
+   SC_{rl}^\prime\left(
+   \begin{array}{c}
+   a \\
+   b \\
+   c \\
+   d
+   \end{array}\right) = \left(\begin{array}{c}
+   1 \\
+   R_{11}
+   \end{array}\right),
+   \end{equation}
+   
+   \begin{equation}
+   \label{generalizedBoundaryCond2}
+   SC_{lr}^{\prime\prime}\left(
+   \begin{array}{c}
+   b e^{ikl_1} \\
+   a e^{-ikl_1}\\
+   d e^{ikl_2}\\
+   c e^{-ikl_2}
+   \end{array}\right) = \left(\begin{array}{c}
+   0 \\
+   T_{12}
+   \end{array}\right)   
+   \end{equation}
+   
+   Отсюда получаем два уравнения на коэффициенты $a, b, c, d$:
+   \[
+   \begin{aligned}
+   -T_{23}^\prime T_{13}^\prime a - R_{33}^\prime \left(T_{13}^\prime\right)^{-1}c + \left(T_{13}^\prime\right)^{-1}d &= 1 \\
+   -T_{23}^{\prime\prime} T_{13}^{\prime\prime} b e^{ikl_1} - R_{33}^{\prime\prime} \left(T_{13}^{\prime\prime}\right)^{-1}d e^{ikl_2} + \left(T_{13}^{\prime\prime}\right)^{-1}c e^{-ikl_2} &= 0
+   \end{aligned}\]
+   
+   Оставшиеся 2 уравнения получим из условия совместности (\ref{compabilityConditionGeneralized}) для операторов $SC_{rl}^\prime, \ SC_{lr}^{\prime\prime}$:
+   \[
+   \begin{aligned}
+   \left(d-aT_{23}^\prime -cR_{33}^\prime\right)\left(T_{13}^\prime\right)^{-1} &= \left(b-aR_{22}^\prime -c T_{32}^\prime\right)\left(T_{12}^\prime\right)^{-1} \\
+   \left(c e^{-ikl_2}-b e^{ikl_1} T_{23}^{\prime\prime}-d e^{ikl_2}R_{33}^{\prime\prime}\right)\left(T_{13}\right)^{-1} &= \left(a e^{-ikl_1} - b e^{ikl_1} R_{22}^{\prime\prime} -d e^{ikl_2} T_{32}^{\prime\prime}\right)\left(T_{12}^{\prime\prime}\right)^{-1}
+   \end{aligned}
+   \]
+   
+   Перепишем СЛАУ в матричном виде:
+   \[
+   \begin{pmatrix}
+   -T_{23}^{\prime}T_{13}^{\prime} & 0 & -\frac{R_{33}^{\prime}}{T_{13}^\prime} & \frac{1}{T_{13}^\prime}\\ 
+   0 & -T_{23}^{\prime\prime} T_{13}^{\prime\prime} e^{ikl_1}  & \frac{e^{-ikl_2}}{T_{13}^{\prime\prime}} & -\frac{R_{33}^{\prime\prime}e^{ikl_2}}{T_{13}^{\prime\prime}} \\ 
+   \frac{R_{22}^{\prime}}{T_{12}^{\prime}}-\frac{T_{23}^{\prime}}{T_{13}^{\prime}} & -\frac{1}{T_{12}^{\prime}} & \frac{T_{32}^{\prime}}{T_{12}^{\prime}}-\frac{R_{33}^{\prime}}{T_{13}^{\prime}} & \frac{1}{T_{13}^{\prime}}\\ 
+   -\frac{e^{-ikl_1}}{T_{12}^{\prime\prime}} & e^{ikl_1}\left(\frac{R_{22}^{\prime\prime}}{T_{12}^{\prime\prime}} - \frac{T_{23}^{\prime\prime}}{T_{13}^{\prime\prime}}\right) & e^{-ikl_2} & e^{ikl_2}\left(\frac{T_{32}^{\prime\prime}}{T_{12}^{\prime\prime}} - \frac{R_{33}^{\prime\prime}}{T_{13}^{\prime\prime}}\right)
+   \end{pmatrix}
+   \begin{pmatrix}
+   a \\
+   b \\
+   c \\
+   d
+   \end{pmatrix} = 
+   \begin{pmatrix}
+   1 \\
+   0 \\
+   0 \\
+   0 
+   \end{pmatrix}\]
+   
+   Решая эту систему, найдём искомое значение $R_{11}$ по формуле (\ref{generalizedBoundaryCond1}):   	
+   {\tiny
+   \[
+   {\frac {{\it T_{13}^{\prime}}\, \left( -{\it R_{33}^{\prime\prime}}\,{\it T_{13}^{\prime\prime}}\, \left( {\it R_{11}^{\prime}}\,{
+   			\it R_{33}^{\prime}}-{\it T_{13}^{\prime}}\,{\it T_{31}^{\prime}} \right) {{\rm e}^{-ik \left( {\it l1}-{
+   					\it l2} \right) }}- \left( {\it T_{12}^{\prime\prime}}\,{{\it T_{13}^{\prime\prime}}}^{3}{\it T_{23}^{\prime\prime}}+{\it 
+   			R_{22}^{\prime\prime}}\,{\it T_{13}^{\prime\prime}}-{\it T_{12}^{\prime\prime}}\,{\it T_{23}^{\prime\prime}} \right)  \left( {\it R_{11}^{\prime}}\,{\it 
+   			R_{22}^{\prime}}-{\it T_{12}^{\prime}}\,{\it T_{21}^{\prime}} \right) {{\rm e}^{ik \left( {\it l1}-{\it l2
+   				} \right) }}+{{\rm e}^{-ik \left( {\it l1}+{\it l2} \right) }}{\it T_{13}^{\prime\prime}
+   		}\,{\it R_{11}^{\prime}}+ \left(  \left( -{\it R_{22}^{\prime}}\,{\it T_{31}^{\prime}}+{\it T_{21}^{\prime}}\,{\it T_{32}^{\prime}
+   		} \right) {\it T_{13}^{\prime}}+ \left( -{\it R_{11}^{\prime}}\,{\it T_{32}^{\prime}}+{\it T_{12}^{\prime}}\,{\it T_{31}^{\prime}}
+   		\right) {\it T_{23}^{\prime}}+{\it R_{33}^{\prime}}\, \left( {\it R_{11}^{\prime}}\,{\it R_{22}^{\prime}}-{\it T_{12}^{\prime}}\,
+   		{\it T_{21}^{\prime}} \right)  \right)  \left( {\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}}\,{{\it T_{13}^{\prime\prime}}}^{
+   			2}{\it T_{23}^{\prime\prime}}-{{\it T_{13}^{\prime\prime}}}^{3}{\it T_{23}^{\prime\prime}}\,{\it T_{32}^{\prime\prime}}+{\it R_{22}^{\prime\prime}}\,{\it R_{33}^{\prime\prime}}\,
+   		{\it T_{13}^{\prime\prime}}-{\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}}\,{\it T_{23}^{\prime\prime}} \right) {{\rm e}^{ik \left( 
+   				{\it l1}+{\it l2} \right) }}-{\it T_{23}^{\prime\prime}}\, \left( {\it R_{11}^{\prime}}\,{\it T_{32}^{\prime}}-{
+   			\it T_{12}^{\prime}}\,{\it T_{31}^{\prime}} \right) {{\it T_{13}^{\prime\prime}}}^{3}- \left( {\it R_{33}^{\prime\prime}}\,{\it 
+   			T_{12}^{\prime\prime}}+{\it T_{32}^{\prime\prime}} \right)  \left( {\it R_{11}^{\prime}}\,{\it T_{23}^{\prime}}-{\it T_{13}^{\prime}}\,{\it 
+   			T_{21}^{\prime}} \right) {\it T_{13}^{\prime\prime}}+{\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}}\, \left( {\it R_{11}^{\prime}}\,{\it 
+   			T_{23}^{\prime}}-{\it T_{13}^{\prime}}\,{\it T_{21}^{\prime}} \right)  \right) }{-{{\rm e}^{-ik \left( {
+   					\it l1}-{\it l2} \right) }}{\it R_{33}^{\prime\prime}}\,{\it T_{13}^{\prime\prime}}\,{\it R_{33}^{\prime}}\,{\it T_{13}^{\prime}}-
+   		\left( {\it T_{12}^{\prime\prime}}\,{{\it T_{13}^{\prime\prime}}}^{3}{\it T_{23}^{\prime\prime}}+{\it R_{22}^{\prime\prime}}\,{\it T_{13}^{\prime\prime}}-{\it 
+   			T_{12}^{\prime\prime}}\,{\it T_{23}^{\prime\prime}} \right)  \left( {\it T_{12}^{\prime}}\,{{\it T_{13}^{\prime}}}^{2}{\it T_{23}^{\prime}}+{
+   			\it R_{22}^{\prime}}\,{\it T_{13}^{\prime}}-{\it T_{12}^{\prime}}\,{\it T_{23}^{\prime}} \right) {{\rm e}^{ik \left( {
+   					\it l1}-{\it l2} \right) }}+{{\rm e}^{-ik \left( {\it l1}+{\it l2}
+   				\right) }}{\it T_{13}^{\prime\prime}}\,{\it T_{13}^{\prime}}+ \left( {\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}}\,{{\it 
+   				T_{13}^{\prime\prime}}}^{2}{\it T_{23}^{\prime\prime}}-{{\it T_{13}^{\prime\prime}}}^{3}{\it T_{23}^{\prime\prime}}\,{\it T_{32}^{\prime\prime}}+{\it R_{22}^{\prime\prime}}\,{
+   			\it R_{33}^{\prime\prime}}\,{\it T_{13}^{\prime\prime}}-{\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}}\,{\it T_{23}^{\prime\prime}} \right)  \left( {
+   			\it R_{33}^{\prime}}\,{\it T_{12}^{\prime}}\,{{\it T_{13}^{\prime}}}^{2}{\it T_{23}^{\prime}}-{{\it T_{13}^{\prime}}}^{3}{\it T_{23}^{\prime}}
+   		\,{\it T_{32}^{\prime}}+{\it R_{22}^{\prime}}\,{\it R_{33}^{\prime}}\,{\it T_{13}^{\prime}}-{\it R_{33}^{\prime}}\,{\it T_{12}^{\prime}}\,{
+   			\it T_{23}^{\prime}} \right) {{\rm e}^{ik \left( {\it l1}+{\it l2} \right) }}-{
+   			\it T_{13}^{\prime}}\, \left( {\it T_{32}^{\prime}}\,{\it T_{23}^{\prime\prime}}\,{{\it T_{13}^{\prime\prime}}}^{3}+{{\it T_{13}^{\prime}}}^{2
+   		}{\it T_{23}^{\prime}}\, \left( {\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}}+{\it T_{32}^{\prime\prime}} \right) {\it T_{13}^{\prime\prime}}-{
+   			{\it T_{13}^{\prime}}}^{2}{\it T_{23}^{\prime}}\,{\it R_{33}^{\prime\prime}}\,{\it T_{12}^{\prime\prime}} \right) }}
+   \]
+}
+   
 
    Заметим, что подобный подход позволяет склеивать одинаковые с топологической точки зрения графы, в том числе имеющие различные данные рассеяния. Повторив вышеописанные рассуждения, можно получить теорему на данный случай.
    
