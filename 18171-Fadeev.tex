@@ -1230,28 +1230,59 @@
    
    \[
    \begin{aligned}
-   A_1 &= T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^2 \left(r_{11}^\prime (T_{13}^\prime)^2 T_{23}^\prime - T_{23}^\prime r_{11}^\prime + T_{21}^\prime T_{13}^\prime\right) ,\\
+   A_1 &= T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^2 \left(R_{11}^\prime (T_{13}^\prime)^2 T_{23}^\prime - T_{23}^\prime R_{11}^\prime + T_{21}^\prime T_{13}^\prime\right) ,\\
    A_2 &= (T_{13}^{\prime\prime})^2 T_{13}^\prime T_{31}^\prime ,\\
-   A_3 &= T_{23}^\prime \left(r_{11}^\prime T_{32}^\prime - T_{12}^\prime T_{31}^\prime\right) ,\\
-   A_4 &= T_{13}^\prime \left(T_{21}^\prime T_{32}^\prime - r_{22}^\prime T_{31}^\prime\right) ,\\
+   A_3 &= T_{23}^\prime \left(R_{11}^\prime T_{32}^\prime - T_{12}^\prime T_{31}^\prime\right) ,\\
+   A_4 &= T_{13}^\prime \left(T_{21}^\prime T_{32}^\prime - R_{22}^\prime T_{31}^\prime\right) ,\\
    A_5 &= T_{13}^{\prime\prime} \left(A_3 (T_{13}^\prime)^2 - A_3 + A_4\right)\left(R_{22}^{\prime\prime} T_{13}^{\prime\prime} - T_{12}^{\prime\prime} T_{23}^{\prime\prime}\right) ,\\
    A_6 &= R_{33}^{\prime\prime} T_{12}^{\prime\prime} + T_{13}^{\prime\prime} T_{32}^{\prime\prime} ,\\
-   A_7 &= r_{11}^\prime r_{33}^\prime (T_{13}^\prime)^2 T_{23}^\prime -(T_{13}^\prime)^3 T_{23}^\prime T_{31}^\prime - r_{11}^\prime r_{33}^\prime T_{23}^\prime,\\
-   A_8 &= T_{13}^{\prime\prime} A_6 \left(A_7 + r_{33}^\prime T_{13}^\prime T_{21}^\prime\right) ,\\
-   B_1 &= -R_{33}^{\prime\prime} T_{13}^{\prime\prime} r_{33}^\prime T_{13}^\prime ,\\
-   B_2 &= -\left(T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^3 T_{23}^{\prime\prime} + R_{22}^{\prime\prime} T_{13}^{\prime\prime} - T_{12}^{\prime\prime} T_{23}^{\prime\prime}\right)\left(T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime + r_{22}^\prime T_{13}^\prime - T_{12}^\prime T_{23}^\prime\right) ,\\
+   A_7 &= R_{11}^\prime R_{33}^\prime (T_{13}^\prime)^2 T_{23}^\prime -(T_{13}^\prime)^3 T_{23}^\prime T_{31}^\prime - R_{11}^\prime R_{33}^\prime T_{23}^\prime,\\
+   A_8 &= T_{13}^{\prime\prime} A_6 \left(A_7 + R_{33}^\prime T_{13}^\prime T_{21}^\prime\right) ,\\
+   B_1 &= -R_{33}^{\prime\prime} T_{13}^{\prime\prime} R_{33}^\prime T_{13}^\prime ,\\
+   B_2 &= -\left(T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^3 T_{23}^{\prime\prime} + R_{22}^{\prime\prime} T_{13}^{\prime\prime} - T_{12}^{\prime\prime} T_{23}^{\prime\prime}\right)\left(T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime + R_{22}^\prime T_{13}^\prime - T_{12}^\prime T_{23}^\prime\right) ,\\
    B_3 &=  T_{13}^{\prime\prime} T_{13}^\prime ,\\
    B_4 &= R_{33}^{\prime\prime} T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^2 T_{23}^{\prime\prime} - (T_{13}^{\prime\prime})^3 T_{23}^{\prime\prime} T_{32}^{\prime\prime} + R_{22}^{\prime\prime} R_{33}^{\prime\prime} T_{13}^{\prime\prime} - R_{33}^{\prime\prime} T_{12}^{\prime\prime} T_{23}^{\prime\prime} ,\\
-   B_5 &= r_{33}^\prime T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime - (T_{13}^\prime)^3 T_{23}^\prime T_{32}^\prime + r_{22}^\prime r_{33}^\prime T_{13}^\prime - r_{33}^\prime T_{12}^\prime T_{23}^\prime ,\\
+   B_5 &= R_{33}^\prime T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime - (T_{13}^\prime)^3 T_{23}^\prime T_{32}^\prime + R_{22}^\prime R_{33}^\prime T_{13}^\prime - R_{33}^\prime T_{12}^\prime T_{23}^\prime ,\\
    B_6 &= B_4 B_5 ,\\
    B_7 &= \left(R_{33}^{\prime\prime} T_{12}^{\prime\prime} + T_{32}^{\prime\prime}\right) T_{13}^{\prime\prime} - R_{33}^{\prime\prime} T_{12}^{\prime\prime} ,\\
    B_8 &= -T_{13}^\prime \left(B_7 T_{23}^\prime (T_{13}^\prime)^2 + T_{32}^\prime T_{23}^{\prime\prime} (T_{13}^{\prime\prime})^3\right).
    \end{aligned}\]
    
+   Оставшийся коэффициент:
+   
    \begin{equation}
    \label{R22}
-   R_{22} = \text{in progress...} 
+   R_{22} = \frac{A_1 e^{-ik\left(l_1-l_2\right)} + A_3 e^{ik\left(l_1-l_2\right)} + A_4 e^{-ik\left(l_1+l_2\right)} + A_9 e^{ik\left(l_1+l_2\right)} + A_{12}}{B_1 e^{-ik\left(l_1-l_2\right)} + B_3 e^{ik\left(l_1-l_2\right)} + B_4 e^{-ik\left(l_1+l_2\right)} + B_8 e^{ik\left(l_1+l_2\right)} + B_{10}},  \ \text{где} 
    \end{equation}
+   
+   \[
+   \begin{aligned}
+   A_1 &= -R_{33}^\prime T_{13}^\prime T_{13}^{\prime\prime} \left(T_{13}^{\prime\prime} T_{31}^{\prime\prime} - R_{11}^{\prime\prime} R_{33}^{\prime\prime}\right), \\
+   A_2 &= R_{11}^{\prime\prime} T_{13}^{\prime\prime} \left(T_{12}^{\prime\prime} T_{23}^{\prime\prime}  + R_{22}^{\prime\prime}\right) - T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^2 T_{21}^{\prime\prime} - R_{11}^{\prime\prime} T_{12}^{\prime\prime} T_{23}^{\prime\prime}, \\
+   A_3 &=  A_2 \left(T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime + R_{22}^\prime T_{13}^\prime - T_{12}^\prime T_{23}^\prime\right),\\
+   \end{aligned}\]
+   
+   \[\begin{aligned}
+   A_4 &= -R_{11}^{\prime\prime} T_{13}^{\prime\prime} T_{13}^\prime,\\
+   A_5 &= T_{13}^{\prime\prime} \left(T_{21}^{\prime\prime} T_{32}^{\prime\prime} - R_{22}^{\prime\prime} T_{31}^{\prime\prime}\right),\\
+   A_6 &= T_{12}^{\prime\prime} \left(T_{23}^{\prime\prime} T_{31}^{\prime\prime} - R_{33}^{\prime\prime} T_{21}^{\prime\prime}\right),\\
+   A_7 &= -R_{11}^{\prime\prime} \left(T_{23}^{\prime\prime} T_{32}^{\prime\prime} - R_{22}^{\prime\prime} R_{33}^{\prime\prime}\right),\\
+   A_8 &= R_{33}^\prime T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime - (T_{13}^\prime)^3 T_{23}^\prime T_{32}^\prime + R_{22}^\prime R_{33}^\prime T_{13}^\prime - R_{33}^\prime T_{12}^\prime T_{13}^\prime,\\
+   A_9 &= -T_{13}^{\prime\prime} \left(A_5 + A_6 + A_7\right) A_8,\\
+   A_{10} &= -(T_{13}^{\prime\prime})^2 \left(T_{12}^{\prime\prime} T_{31}^{\prime\prime} (T_{13}^\prime)^2 T_{23}^\prime + T_{21}^{\prime\prime} T_{32}^\prime\right),\\
+   A_{11} &= T_{23}^\prime \left(R_{33}^{\prime\prime} T_{12}^{\prime\prime} + T_{32}^{\prime\prime}\right) (T_{13}^\prime)^2 + T_{23}^{\prime\prime} T_{32}^\prime,\\
+   A_{12} &= T_{13}^\prime \left(A_{10} + A_{11} R_{11}^{\prime\prime} T_{13}^{\prime\prime} - (T_{13}^\prime)^2 T_{23}^\prime R_{11}^{\prime\prime} R_{33}^{\prime\prime} T_{12}^{\prime\prime}\right),\\
+   B_1 &= R_{33}^{\prime\prime} T_{13}^{\prime\prime} R_{33}^\prime T_{13}^\prime,\\
+   B_2 &= T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^3 T_{23}^{\prime\prime} + R_{22}^{\prime\prime} T_{13}^{\prime\prime} - T_{12}^{\prime\prime} T_{23}^{\prime\prime},\\
+   B_3 &= B_2 \left(T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime + R_{22}^\prime T_{13}^\prime - T_{12}^\prime T_{23}^\prime\right),\\
+   B_4 &= -T_{13}^{\prime\prime} T_{13}^\prime,\\
+   B_5 &= R_{33}^\prime T_{12}^\prime (T_{13}^\prime)^2 T_{23}^\prime - (T_{13}^\prime)^3 T_{23}^\prime T_{32}^\prime + R_{22}^\prime R_{33}^\prime T_{13}^\prime - R_{33}^\prime T_{12}^\prime T_{23}^\prime,\\
+   B_6 &= (T_{13}^{\prime\prime})^3 T_{23}^{\prime\prime} T_{32}^{\prime\prime} - R_{33}^{\prime\prime} T_{12}^{\prime\prime} (T_{13}^{\prime\prime})^2 T_{23}^{\prime\prime}, \\
+   B_7 &= R_{33}^{\prime\prime} T_{12}^{\prime\prime} T_{23}^{\prime\prime} - R_{22}^{\prime\prime} R_{33}^{\prime\prime} T_{13}^{\prime\prime},\\
+   B_8 &= B_5 \left(B_6 + B_7\right),\\
+   B_9 &= T_{32}^\prime T_{23}^{\prime\prime} (T_{13}^{\prime\prime})^3 + (T_{13}^\prime)^2 T_{23}^\prime T_{13}^{\prime\prime} \left(R_{33}^{\prime\prime} T_{12}^{\prime\prime} + T_{32}^{\prime\prime}\right),\\
+   B_{10} &= T_{13}^\prime\left(B_9 - (T_{13}^\prime)^2 T_{23}^\prime R_{33}^{\prime\prime} T_{12}^{\prime\prime}\right).
+   \end{aligned}\]
    
 
    Заметим, что подобный подход позволяет склеивать одинаковые с топологической точки зрения графы, в том числе имеющие различные данные рассеяния. Повторив вышеописанные рассуждения, можно получить теорему на данный случай.
