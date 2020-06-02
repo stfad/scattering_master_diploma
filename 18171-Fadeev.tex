@@ -547,10 +547,10 @@
    	\item $C_3 = T_{2n-1 \ 2}, \ C_5 = T_{2n-1 \ 3}, \ldots, C_{2n-1} = R_{2n-1 \  2n-1}$ 
    \end{itemize}
     
-   \pagebreak
-    
    \subsection{КОЛЬЦО С $n$ ПОЛУБЕСКОНЕЧНЫМИ ДУГАМИ}
-   Также определённый интерес представляет задача рассеяния на кольцах с $n$ полубесконечными дугами. В качестве примера рассмотрим следующий граф с 3 рёбрами единичной длины, на компактной части задан константный потенциал:
+   Также определённый интерес представляет задача рассеяния на кольцах с $n$ полубесконечными дугами. Заметим, что количество сегментов петли совпадает с количеством полубесконечных дуг, поэтому граф-петля с 1 полубесконечной дугой совпадает с графом-кольцом с 1 полубесконечной дугой.
+   
+   Рассмотрим задачу рассеяния на графе-кольце с 3 полубесконечными дугами с нулевым потенциалом, 3 рёбрами единичной длины, на компактной части задан константный потенциал:
    \begin{figure}[h]
    	\centering
    	\includegraphics[scale=0.5]{arrow_graph.jpg}
@@ -558,12 +558,12 @@
    
    Ищем решение в виде
    \[\psi\left(k\right) = \left\{\psi_1\left(k,x\right), \psi_2\left(k,x\right)\right\}, \psi_3\left(k,x\right),\psi_4\left(k,x\right),\psi_5\left(k,x\right),\psi_6\left(k,x\right),\ \text{где}\]
-   \[\psi_1 = c_1 \cdot e^{ikx} + c_2 \cdot e^{-ikx}, \ x \in \left[0,1\right],\]
-   \[\psi_2 = c_3 \cdot e^{ikx} + c_4 \cdot e^{-ikx}, \ x \in \left[0,1\right],\]
-   \[\psi_3 = c_5 \cdot e^{ikx} + c_6 \cdot e^{-ikx}, \ x \in \left[0,1\right],\]
-   \[\psi_4 = c_7 \cdot e^{\sqrt{u-k^2}} + c_8 \cdot e^{-\sqrt{u-k^2}}, \ x \in \left[0, +\infty\right),\]
-   \[\psi_5 = c_9 \cdot e^{\sqrt{u-k^2}} + c_{10} \cdot e^{-\sqrt{u-k^2}}, \ x \in \left[0, +\infty\right),\]
-   \[\psi_6 = c_{11} \cdot e^{\sqrt{u-k^2}} + c_{12} \cdot e^{-\sqrt{u-k^2}}, \ x \in \left[0, +\infty\right).\]
+   \[\psi_1 = c_1 \cdot e^{ikx} + c_2 \cdot e^{-ikx}, \ x \in \left[0,+\infty\right),\]
+   \[\psi_2 = c_3 \cdot e^{ikx} + c_4 \cdot e^{-ikx}, \ x \in \left[0,+\infty\right),\]
+   \[\psi_3 = c_5 \cdot e^{ikx} + c_6 \cdot e^{-ikx}, \ x \in \left[0,+\infty\right),\]
+   \[\psi_4 = c_7 \cdot e^{\sqrt{u-k^2}x} + c_8 \cdot e^{-\sqrt{u-k^2}x}, \ x \in \left[0, 1\right],\]
+   \[\psi_5 = c_9 \cdot e^{\sqrt{u-k^2}x} + c_{10} \cdot e^{-\sqrt{u-k^2}x}, \ x \in \left[0, 1\right],\]
+   \[\psi_6 = c_{11} \cdot e^{\sqrt{u-k^2}x} + c_{12} \cdot e^{-\sqrt{u-k^2}x}, \ x \in \left[0, 1\right].\]
    Обозначив $p = \sqrt{u-k^2}$, получим сопутствующую систему законов Кирхгофа с нулевой правой частью:
    \[ A = \left(\begin{smallmatrix}
    1 & 1 & 0 & 0 & 0 & 0 & -e^{p} & -e^{-p} & 0 & 0 & 0 & 0 \\
@@ -589,7 +589,7 @@
    \begin{cases}
    c_1 = T_{21},\\
    c_2 = 0, \\
-   c_3 = R_{12}, \\
+   c_3 = R_{22}, \\
    c_4 = 1, \\
    c_5 = T_{23}, \\
    c_6 = 0,
@@ -599,18 +599,55 @@
    c_2 = 0, \\
    c_3 = T_{32}, \\
    c_4 = 0, \\
-   c_5 = R_{13}, \\
+   c_5 = R_{33}, \\
    c_6 = 1,
    \end{cases}
    \]
-   получим искомые данные рассеяния:
-   \begin{itemize}
-  	 \item $C_1 = R_{11}, C_3 = T_{12}, C_5 = T_{13}$, 
-  	 \item $C_1 = T_{21}, C_3 = R_{22}, C_5 = T_{23}$,  
- 	 \item $C_1 = T_{31}, C_3 = T_{32}, C_5 = R_{33}$.
-   \end{itemize}
+   и решая получившиеся СЛАУ, получим искомые данные рассеяния:
 
-   TODO: выписать явный вид решений
+   \[
+   \begin{aligned}
+   R_{11} &= \frac{1}{3}{\frac { A_7  \left( A_8+A_9+ A_{10}+A_{11}  \right) }{ \left( 
+   		B_1+B_2+B_3+ B_4+B_5 \right) B_6 }}, \\
+   T_{12} &= -\frac{4}{3}pk{\frac {A_{12} + A_{13} + A_{14} + A_{15} + A_{16} + A_{17} + A_{18} + A_{19}}{ \left(B_1+B_2+B_3+ B_4+B_5 \right) B_6 }}, \ \text{где}\\
+   A_1 &= \left(4k^4 -10k^3pi - 8kp^3i\right)e^{2p}, \\
+   A_2 &= \left(-48p^4 -4k^4 -8k^2p^2-16kp^3i+2k^3pi\right)e^{3p}, \\
+   A_3 &= \left(-6k^4-4k^2p^2+6k^3pi+16kp^3i\right)e^{4p},\\
+   A_4 &= \left(48p^4+4k^4+8k^2p^2-16kp^3i+2k^3pi\right)e^{6p},\\
+   A_5 &= \left(6k^3pi+16kp^3i+6k^4+4k^2p^2\right)e^{5p},\\
+   A_6 &= \left(-10k^3pi-8kp^3i-4k^4\right)e^{7p},\\м
+   \end{aligned}\]
+   \[
+   \begin{aligned}
+   A_7 &= 4\left(k^2+4p^2\right),\\
+   A_8 &= -\frac{1}{2}\left(ip+\frac{k}{2}\right)e^{8p},\\
+   A_9 &= -\frac{1}{2}\left(ip-\frac{k}{2}\right)ke^p,\\
+   A_{10} &= \left(\frac{1}{4}e^{9p}-\frac{1}{4}\right)k^2,\\
+   A_{11} &= ipk\left(e^{9p}+1\right)-p^2\left(e^{9p}-1\right),\\
+   A_{12} &= \left(3ik^2-8kp\right)e^{6p},\\
+   A_{13} &= \left(4ip^2+ik^2\right)e^{2p},\\
+   A_{14} &= \left(3ik^2+8kp\right)e^{3p},\\
+   A_{15} &= \left(-3ik^2-8ip^2+4kp\right)e^{4p},\\
+   A_{16} &= \left(-3ik^2-8ip^2-4kp\right)e^{5p},\\
+   A_{17} &= \left(-ik^2+4ip^2+4kp\right)e^{8p},\\
+   A_{18} &= \left(4ip^2+ik^2\right)e^{7p},\\
+   A_{19} &= -\left(ik^2-4ip^2+4kp\right)e^p.\\
+   B_1 &=\left(\frac{i}{3k^3}-4kp^2i-2k^2p+\frac{8}{3p^3}\right)e^{6p}\\
+   B_2 &=\left(-\frac{16}{3}p^3\right)e^{3p}\\
+   B_3 &=\left(k^2\left(ik+2p\right)\right)e^{2p}\\
+   B_4 &=\left(2k^2p-ik^3\right)e^{4p}\\
+   B_5 &=-\frac{i}{3k^3}+4kp^2i-2k^2p+\frac{8}{3}p^3\\
+   B_6 &=\left(2p-ik\right)e^{3p}+ie^pk+ie^{2p}k-ik-2p\\
+   \end{aligned}\]
+   
+
+   В силу симметричности задачи,
+      \[R_{11} = R_{22} = R_{33}\]
+   \[T_{12} = T_{13} = T_{21} = T_{23} = T_{31} = T_{32}.\]
+   
+   Таким образом, прямая задача рассеяния для графа-кольца с 3 полубесконечными дугами полностью решена.
+   
+
    
    \pagebreak
    
