@@ -15,6 +15,10 @@
 \usepackage[left=3cm, right=1cm, top=1.5cm, bottom=2cm, bindingoffset=0cm]{geometry}
 \usepackage{indentfirst}
 \usepackage[pdftex]{graphicx}
+\usepackage{ifpdf}
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
 \usepackage{enumerate}
 \usepackage{multirow}
 \usepackage{tocloft}
@@ -429,7 +433,8 @@
   Рассмотрим задачу рассеяния на графе-звезде, содержащем 3 дуги и 1 вершину, все потенциалы нулевые.
   \begin{figure}[!htb]
   	\centering
-  	\includegraphics[scale=0.5]{star.jpg}
+   	\includegraphics[scale=1.5]{3star.ps}
+  	%\includegraphics[scale=0.5]{star.jpg}
   \end{figure}
   Ищем решение в виде:
   \[\begin{split}
@@ -489,7 +494,7 @@
    Рассмотрим граф,
    \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.5]{one-arrow.jpg}
+   	\includegraphics[scale=1.5]{1loop.ps}
    \end{figure}
    \\состоящий из петли и одной полубесконечной дуги. Предположим, что на петле длины $a$ задан некоторый константный потенциал, а на полубесконечной дуге потенциал нулевой.
    Ищем решение в виде
@@ -535,9 +540,9 @@
    Физический смысл матрицы рассеяния понятен: в $i$-й строке на $i$-м месте находится коэффициент отражения $R_{ii}$, на $j$-м месте стоит коэффициент прохождения $T_{ij}$, $i \in \left\{1,\ldots,n-1\right\}, j \in \left\{1,\ldots,n-1\right\}\setminus i $.  Это соответствует ситуации, в которой волновой пакет единичной амплитуды попадает в граф из бесконечно удалённой точки по бесконечному ребру с номером $i$, рассеивается на графе, а затем возвращается с коэффициентом отражения $R_{ii}$ по ребру с номером $i$, с коэффициентами прохождения $T_{ij}$ по рёбрам с номерами $j \in \left\{1,\ldots,n-1\right\}\setminus i $.
    
    Для петли с $n$ полубесконечными рёбрами имеем СЛАУ $(n+1)\cdot (n+1)$ с матрицей:
-   \begin{figure}
+   \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.5]{n-arrow.jpg}
+   	\includegraphics[scale=1.5]{nloop.ps}
    \end{figure}
    \[ A = \left(\begin{smallmatrix}
    1-e^{\sqrt{u-k^2}} & 1-e^{-\sqrt{u-k^2}} & 0 & 0 & \ldots & 0 \\
@@ -588,7 +593,7 @@
    Рассмотрим задачу рассеяния на графе-кольце с 3 полубесконечными дугами с нулевым потенциалом, 3 рёбрами единичной длины, на компактной части задан константный потенциал:
    \begin{figure}[h]
    	\centering
-   	\includegraphics[scale=0.5]{arrow_graph.jpg}
+      	\includegraphics[scale=1.5]{3ring.ps}
    \end{figure}
    
    Ищем решение в виде
@@ -685,15 +690,20 @@
    В работе А.~Н.~Бондаренко и В.~А.~Дедка \cite{SpectralSurgery} рассмотрен метод склейки графов, содержащих неизвестную компактную часть и две бесконечные дуги. Предполагается, что потенциалы на бесконечных рёбрах нулевые.
    \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.3]{skleika1.png}
+      	\includegraphics[scale=1.5]{CG1.ps}
    \end{figure}
+   
+      \begin{figure}[!htb]
+      	\centering
+      	\includegraphics[scale=1.5]{CG2.ps}
+      \end{figure}
 
    Была поставлена задача: рассмотреть процесс склейки двух графов, содержащих неизвестную компактную часть и три полубесконечных дуги, по двум парам дуг.
    
    \subsection{СКЛЕЙКА ПАРЫ ГРАФОВ С ОДИНАКОВЫМИ ДАННЫМИ РАССЕЯНИЯ}
    \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.5]{g_prime.png}
+    \includegraphics[scale=1.5]{CG3.ps}
    \end{figure}
 
    Рассмотрим граф $G^\prime$, его данные рассеяния известны. Для решения поставленной задачи построим рассеивающий оператор $SC$, сопоставляющий решениям с двух правых бесконечных дуг решение на левой бесконечной дуге.
@@ -789,9 +799,9 @@
    
    Приступим к слейке графов $G^\prime$ и $G^{\prime \prime}$ по двум полубесконечным дугам в дуги единичной длины:
    \begin{figure}[!htb]
-   	\centering
-   	\includegraphics[scale=0.54]{skleika2.png} \\
-   	\includegraphics[scale=0.45]{skleika3.png}
+      	\centering
+      	\includegraphics[scale=1.5]{CG4.ps} \\
+      	\includegraphics[scale=1.5]{CG5.ps}
    \end{figure}
 
    Ясно, что $\psi_1\left(x\right), \varphi_1\left(x\right), \varphi_1\left(1-x\right), \varphi_2\left(x\right), \varphi_2\left(1-x\right), \psi_2\left(x\right)$ ~--- решения задач рассеяния для графов  $G^\prime$ и $G^{\prime \prime}$ на полубесконечных дугах.
@@ -961,7 +971,7 @@
    
    \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.5]{g_prime.png}
+   	\includegraphics[scale=1.5]{CG3.ps}
    \end{figure}
    
    Аналогично предыдущему пункту, рассмотрим граф $G^\prime$ с известными данными рассеяния 
@@ -1100,8 +1110,8 @@
    Приступим к слейке графов $G^\prime$ и $G^{\prime \prime}$:
    \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.54]{skleika2.png} \\
-   	\includegraphics[scale=0.45]{skleika3.png}
+   	\includegraphics[scale=1.5]{CG4.ps} \\
+   	\includegraphics[scale=1.5]{CG5.ps}
    \end{figure}
    
    Склеим дуги, соответствующие решениям $\psi_2, \ \psi_4$ в дугу длины $l_1$, соответствующие решениям $\psi_3, \ \psi_5$ в дугу длины $l_2$.
@@ -1435,7 +1445,7 @@
    Ранее мы уже рассматривали граф-петлю с одной полубесконечной дугой:
    \begin{figure}[!htb]
    	\centering
-   	\includegraphics[scale=0.5]{one-arrow.jpg}
+   	\includegraphics[scale=1.5]{1loop.ps}
    \end{figure}
 
 
